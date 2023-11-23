@@ -1,10 +1,16 @@
-create database if not exists tms;
+CREATE DATABASE IF NOT EXISTS tms;
 
-use tms;
+USE tms
 
-create table if not exists tasks (
-    taskId int auto_increment primary key,
-    taskName varchar(255) not null,
-    is_done boolean default 0
+CREATE TABLE IF NOT EXISTS users (
+    userId INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
 
+CREATE TABLE IF NOT EXISTS tasks (
+    taskId INT AUTO_INCREMENT PRIMARY KEY,
+    taskName VARCHAR(255) NOT NULL,
+    is_Done BOOLEAN DEFAULT 0,
+    userId INT,
+    FOREIGN KEY (userId) REFERENCES users(userId)
 );
